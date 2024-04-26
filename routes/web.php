@@ -1,9 +1,10 @@
 <?php
-$space=" ";
+use App\Models\artists;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\songsController;
 use App\Http\Controllers\infoController;
+
 #Manera básica, aburrida, nefasta...
 #\|/|\|/\|/\|/\|/ Route::get('/', function () {
 #\|/|\|/\|/\|/\|/    return view('welcome');
@@ -42,3 +43,36 @@ Route::get('/info',[infoController::class,'infodex']);
 Route::get('/info/mplayer',[infoController::class,'mplayer']);
 Route::get('/info/disclaimer',[infoController::class,'disclaimer']);
 Route::get('/info/user/{user}',[infoController::class,'userinfo']);
+Route::get('/testing',function(){ 
+    $artists= new artists;
+    /* CREATE
+    $artists->name="Promedio";
+    $artists->bio="NAcido en 101010";
+    $artists->imgs="*ruta*";
+    $artists->redes="link tras link";
+    $artists->save();
+    */
+    /* SELECT
+    $artistssearch=artists::find(1);
+    return $artistssearch;
+    */
+    /* WHERE + UPDATE
+    $artistswheresearch=artists::where('name','Promedio')->first();
+    $artistswheresearch->bio="no nacio";
+    $artistswheresearch->save();
+    return $artistswheresearch;
+    */
+    /* SELECT * AND SELECT * WHERE AND SELECT ORDER BY
+    $allseatch=artists::all();
+    return $allseatch;
+    $allsearchwhere=artists::where('id','>=','2')->select('bio')->get();
+    return $allsearchwhere;
+    $allsearchorder=artists::orderby('id','desc')->get();
+    return $allsearchorder;
+    */
+    /* DELETE
+    $artistsend=artists::find(3);
+    $artistsend->delete();
+    return "Eliminados";
+    */
+});
