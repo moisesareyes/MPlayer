@@ -45,7 +45,9 @@ Route::get('/info/disclaimer',[infoController::class,'disclaimer']);
 Route::get('/info/user/{user}',[infoController::class,'userinfo']);
 Route::get('/testing',function(){ 
     $artists= new artists;
-    /* CREATE
+    $artistssearch=artists::find(1);
+    return $artistssearch->canciones;
+    /* INSERT
     $artists->name="Promedio";
     $artists->bio="NAcido en 101010";
     $artists->imgs="*ruta*";
@@ -75,4 +77,8 @@ Route::get('/testing',function(){
     $artistsend->delete();
     return "Eliminados";
     */
+    /* Relacion entre tablas
+    php artisan make:model adress -m (-m opcional(sirve para hacer una migración instantanea))
+    */
+
 });

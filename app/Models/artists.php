@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class artists extends Model
 {
@@ -14,4 +15,11 @@ class artists extends Model
             return strtoupper($value);
         });
         }
+    public function canciones(){
+        return $this-> hasMany(canciones::class);
+    }
+    public function images(){
+        return $this-> HasMany(imagenes::class);
+    }
+
     }
