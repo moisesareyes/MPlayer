@@ -16,7 +16,8 @@ return new class extends Migration
             $table->id();
             $table->text('nameSong');
             $table->date('release');
-            $table->text('composer');
+            $table->text('link');
+            $table->text('album');
             $table->unsignedBigInteger('artists_id');
             $table->foreign('artists_id')
                 ->references('id')

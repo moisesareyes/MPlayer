@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->text('name')->unique()->index();
             $table->longText('bio');
-            $table->longText('imgs');
-            $table->longText('redes');
             $table->timestamps();
         });
     }

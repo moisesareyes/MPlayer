@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\songsController;
 use App\Http\Controllers\infoController;
-
+use App\Http\Controllers\artistaController;
 #Manera básica, aburrida, nefasta...
 #\|/|\|/\|/\|/\|/ Route::get('/', function () {
 #\|/|\|/\|/\|/\|/    return view('welcome');
@@ -38,15 +38,18 @@ Route::get('/songs',[songsController::class,'songsIndex']);
 Route::get('/songs/top',[songsController::class,'top']);
 Route::get('/songs/hot',[songsController::class,'hot']);
 Route::get('/songs/{artist}',[songsController::class,'artistSong']);
-Route::get('/',indexController::class);
+Route::get('/',indexController::class)->name('indx');
+Route::get('/artist',[artistaController::class,'test']);
+Route::get('/artist/create',[artistaController::class,'create']);
+Route::post('/artist/recep', [artistaController::class,'recep'])->name('recepArtist');
 Route::get('/info',[infoController::class,'infodex']);
 Route::get('/info/mplayer',[infoController::class,'mplayer']);
 Route::get('/info/disclaimer',[infoController::class,'disclaimer']);
 Route::get('/info/user/{user}',[infoController::class,'userinfo']);
 Route::get('/testing',function(){ 
     $artists= new artists;
-    $artistssearch=artists::find(1);
-    return $artistssearch->canciones;
+    $artistswheresearch=artists::where('name','Promedio')->first();
+    return $artistswheresearch->id;
     /* INSERT
     $artists->name="Promedio";
     $artists->bio="NAcido en 101010";

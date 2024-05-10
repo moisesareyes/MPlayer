@@ -19,6 +19,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('artists')
                 ->onDelete('cascade');
+            $table->boolean('principal');
             $table->timestamps();
         });
     }
