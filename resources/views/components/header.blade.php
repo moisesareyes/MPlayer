@@ -7,6 +7,10 @@
     <title>MPlayer</title>
     <link rel="stylesheet" href="css/styles.css">
     @yield('css')
+    <style>
+        body{
+    background-color: #111827;}
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>

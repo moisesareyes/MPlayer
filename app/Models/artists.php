@@ -18,8 +18,10 @@ class artists extends Model
     public function canciones(){
         return $this-> hasMany(canciones::class);
     }
-    public function images(){
+    public function imagenes(){
         return $this-> HasMany(imagenes::class);
     }
-
+    public function redirects(){
+        return $this-> hasMany(redirects::class);
+    }
     }

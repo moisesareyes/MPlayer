@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adresses', function (Blueprint $table) {
+        Schema::create('redirects', function (Blueprint $table) {
             $table->id();
+            $table->text('tittle');
+            $table->text('direccion');
+            $table->unsignedBigInteger('artists_id');
+            $table->foreign('artists_id')
+             ->references('id')
+             ->on('artists')
+             ->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adresses');
+        Schema::dropIfExists('redirects');
     }
 };
