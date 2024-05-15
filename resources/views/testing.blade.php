@@ -5,13 +5,12 @@
             <div class="w-full max-w-screen-md bg-white border border-gray-200 rounded-lg shadow">
                 <div class="flex flex-col items-center pb-5">
                     <br><br>
-                    <img class="w-32 h-32 mb-3 rounded-full shadow-lg" src="{{asset($newimg->dir)}}" alt="Bonnie image"/>
+                    <img class="w-48 mb-3 shadow-lg" src="{{asset($newimg[0]->dir)}}" alt="{{$new->name}}image"/>
                     <h5 class="mb-1 text-xl font-medium text-gray-900">{{$new->name}}</h5>
                     <div class="flex mt-4 md:mt-6">
-                        <a href="#" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-yellow-200 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200">YOUTUBE</a>
-                        <a href="#" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-yellow-200 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200">SPOTIFY</a>
-                        <a href="#" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-yellow-200 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200">INSTAGRAM</a>
-                        <a href="#" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-yellow-200 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200">TWITTER</a>
+                        @foreach ($newredirect as $redir)
+                        <a target="_blank" href="{{$redir->direccion}}" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-yellow-200 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200">{{$redir->tittle}}</a>
+                        @endforeach
                         <a href="#" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 hover:text-yellow-200"><svg class="w-6 h-6 text-gray-900 hover:text-yellow-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M1 5h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 1 0 0-2H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2Zm18 4h-1.424a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2h10.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Zm0 6H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 0 0 0 2h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Z"/></svg></a>
                     </div>
                     <div class="flex mt-4 md:mt-6 py-2 px-4">
@@ -23,33 +22,14 @@
                 <div class="max-w-screen-md">
                     <div class="grid gap-4 px-2.5 py-1.5">
                         <div class="flex justify-center items-center">
-                            <img class="h-auto max-w-full rounded-lg" src="{{asset($newimg->dir)}}" alt="">
+                            <img id='referencia' class="h-auto max-w-full rounded-lg" src="{{asset($newimg[0]->dir)}}" alt="">
                         </div>
                         <div class="grid grid-cols-5 gap-4">
+                            @foreach ($newimg as $img)
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src="{{asset($newimg->dir)}}" alt="">
+                                <img class="h-auto max-w-full rounded-lg" onclick="change('{{asset($img->dir)}}')" src="{{asset($img->dir)}}" alt="{{$new->name}}-img">
                             </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -121,4 +101,10 @@
             </div>
         </div>
     </section>
+    <script>
+        function change($newlink){
+            var img=document.getElementById('referencia');
+            img.src=($newlink);
+        }
+    </script>
 </x-header>

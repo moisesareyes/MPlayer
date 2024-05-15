@@ -29,7 +29,6 @@ class artistaController extends Controller
         $sqlimg->principal=0;
         $sqlimg->artists_id=$sqlrt['id'];
         $sqlimg->save();
-        echo $req->file;
     }
     public function recep(Request $request){
         
@@ -61,8 +60,9 @@ class artistaController extends Controller
     public function testing($selec){
         $new=artists::where('name',$selec)->first();
         if (isset($new)){
-            $newimg=$new->imagenes->first();
-            return view('testing',compact('new','newimg'));
+            $newimg=$new->imagenes;
+            $newredirect=$new->redirects;
+            return view('testing',compact('new','newimg','newredirect'));
         }
         else{
             return redirect('/404');
