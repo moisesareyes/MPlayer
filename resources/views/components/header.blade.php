@@ -24,7 +24,7 @@
                 <div class="flex items-center">
                     <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                         <li>
-                            <a href="#" class="text-gray-900 hover:underline">ARTISTAS</a>
+                            <a href="{{route('/artist/create')}}" class="text-gray-900 hover:underline">ARTISTAS</a>
                         </li>
                         <li>
                             <a href="#" class="text-gray-900 hover:underline">CANCIONES</a>
