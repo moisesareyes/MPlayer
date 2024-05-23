@@ -54,26 +54,35 @@
                 </div><br>
                 <div class="items-center justify-center w-full">
                     <label class="block mb-2 text-sm font-medium text-yellow-200" for="file_input">Imagen principal</label>
-                    <input class="block w-full text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer bg-yellow-50 focus:outline-none" id="file_input" name="primg" type="file">                
+                    <input class="block w-full text-sm text-gray-900 border border-gray-900 rounded-lg cursor-pointer bg-yellow-50 focus:outline-none" id="file_input" name="primg" type="file" accept="image/*">                
                 </div> 
                 @error('primg')
                 <small>{{$message}}</small> 
                 @enderror
                 <br>
                 <div class="items-center flex justify-center"><p class="mb-2 text-sm font-semibold text-yellow-200 tracking-tight">Redirects</p></div>
-                    <div class="px-2.5 flex justify-center py-0.5 items-center">
-                        <div id="main" class="items-center justify-center">
-                            <div class="items-center flex justify-center">
-                                <label for="link" name='forred' class="font-semibold text-sm  text-yellow-200">Titulo / Enlace</label>
-                            </div>
-                            <div class="flex mb-5" name='vacio'>
-                                <input type="text" name="tittle[]" class="bg-yellow-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5" required />
-                                <input name="link[]" type="text" class="bg-yellow-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5" required/>
-                                <a onclick="append()" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium border border-black text-center text-black bg-yellow-100 rounded-lg hover:bg-gray-900 hover:text-yellow-100 focus:ring-4 focus:outline-none focus:ring-blue-300">+</a>
-                            </div>
+                <div class="px-2.5 flex justify-center py-0.5 items-center">
+                    <div id="main" class="items-center justify-center">
+                        <div class="items-center flex justify-center">
+                            <label for="link" name='forred' class="font-semibold text-sm  text-yellow-200">Titulo / Enlace</label>
+                        </div>
+                        <div class="flex mb-5" name='vacio'>
+                            <input type="text" name="tittle[]" class="bg-yellow-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5" required />
+                            <input name="link[]" type="text" class="bg-yellow-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5" required/>
+                            <a onclick="append()" class="inline-flex ms-2 items-center px-4 py-2 text-sm font-medium border border-black text-center text-black bg-yellow-100 rounded-lg hover:bg-gray-900 hover:text-yellow-100 focus:ring-4 focus:outline-none focus:ring-blue-300">+</a>
                         </div>
                     </div>
-                <div class="flex justify-center items-center"><button type="submit" class="focus:outline-none text-black bg-yellow-200 hover:text-yellow-200 hover:bg-gray-900 focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">CREATE ARTIST</button></div>
+                </div>
+                <div class="flex justify-center items-center"><button type="submit" class="focus:outline-none text-black bg-yellow-200 hover:text-yellow-200 hover:bg-gray-900 focus:ring-4 focus:ring-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">ADMINISTRAR ARTISTA</button></div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <div class="items-center justify-center w-full">
+                        @foreach ($errors->all() as $error)
+                            <label class="block mb-2 text-sm font-medium text-yellow-200">{{ $error }}</label>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </form>
         </div>
     </section>

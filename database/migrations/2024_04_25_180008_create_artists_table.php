@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -13,8 +14,13 @@ return new class extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->unique()->index();
+            $table->text('name');
             $table->longText('bio');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('users_id')
+            ->references('id')
+            ->on('users')
+            ->Nullable()->unsigned();
             $table->timestamps();
         });
     }

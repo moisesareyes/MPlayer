@@ -14,7 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav class="dark: bg-yellow-200">
+    <nav class="bg-yellow-200">
         <div class="bg-yellow-200 flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
             <a href="{{route('indx')}}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{asset('img/vinijr.png')}}" class="h-8" alt="Flowbite Logo" />
@@ -24,7 +24,7 @@
                 <div class="flex items-center">
                     <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                         <li>
-                            <a href="{{route('/artist/create')}}" class="text-gray-900 hover:underline">ARTISTAS</a>
+                            <a href="{{route('create')}}" class="text-gray-900 hover:underline">ARTISTAS</a>
                         </li>
                         <li>
                             <a href="#" class="text-gray-900 hover:underline">CANCIONES</a>
@@ -35,6 +35,12 @@
                     </ul>
                 </div>
             </div>
+            <button type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                    <path d="M16 0H4a2 2 0 0 0-2 2v1H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM13.929 17H7.071a.5.5 0 0 1-.5-.5 3.935 3.935 0 1 1 7.858 0 .5.5 0 0 1-.5.5Z"/>
+                </svg>
+            </button>
         </div>
     </nav>
     {{$slot}}

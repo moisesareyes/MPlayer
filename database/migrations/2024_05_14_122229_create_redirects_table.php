@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->foreign('artists_id')
              ->references('id')
              ->on('artists')
-             ->onDelete('cascade')->nullable();
+             ->onDelete('cascade')->unsigned()->Nullable();
             $table->timestamps();
         });
     }

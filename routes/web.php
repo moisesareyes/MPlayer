@@ -1,10 +1,14 @@
 <?php
+
+use App\Http\Controllers\albController;
 use App\Models\artists;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\songsController;
 use App\Http\Controllers\infoController;
 use App\Http\Controllers\artistaController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\playController;
 #Manera básica, aburrida, nefasta...
 #\|/|\|/\|/\|/\|/ Route::get('/', function () {
 #\|/|\|/\|/\|/\|/    return view('welcome');
@@ -41,16 +45,23 @@ Route::get('/songs/{artist}',[songsController::class,'artistSong']);
 Route::get('/',indexController::class)->name('indx');
 Route::get('/404',[indexController::class,'error'])->name('404');
 Route::get('/artist',[artistaController::class,'test']);
-Route::get('/artist/create',[artistaController::class,'create']);
+Route::get('/artist/create',[artistaController::class,'create'])->name('create');
 Route::post('/artist/create/2', [artistaController::class,'create2']);
 Route::get('/artist/testing/{artista}',[artistaController::class,'testing']);
+Route::post('/artist/edit',[artistaController::class,'editArtist'])->name('editArtist');
+Route::post('/artist/r/edit',[artistaController::class,'recepEditA'])->name('recepEditA');
 Route::post('/artist/recep', [artistaController::class,'recep'])->name('recepArtist');
 Route::post('/artist/receplinks', [artistaController::class,'recep2'])->name('/recep2');
-Route::get('/artist/modric',[artistaController::class,'modric']);
+Route::get('/alb/create',[albController::class,'create']);
+Route::post('/alb/reg',[albController::class,'reg'])->name('recepAlb');
 Route::get('/info',[infoController::class,'infodex']);
 Route::get('/info/mplayer',[infoController::class,'mplayer']);
 Route::get('/info/disclaimer',[infoController::class,'disclaimer']);
 Route::get('/info/user/{user}',[infoController::class,'userinfo']);
+Route::get('/login',[userController::class,'login']);
+Route::post('/login/reg',[userController::class,'reg'])->name('recepReg');
+Route::post('/login/log',[userController::class,'log'])->name('recepLog');
+Route::get('/play/{id}',[playController::class,'play']);
 Route::get('/testing',function(){ 
     $artists= new artists;
     $artistswheresearch=artists::where('name','Promedio')->first();

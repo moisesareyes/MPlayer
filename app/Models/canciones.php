@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class canciones extends Model
 {
-    use HasFactory;
+    public function album()
+    {
+        return $this->belongsTo(album::class);
+    }
 }

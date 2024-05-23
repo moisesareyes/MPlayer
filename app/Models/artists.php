@@ -15,13 +15,13 @@ class artists extends Model
             return strtoupper($value);
         });
         }
-    public function canciones(){
-        return $this-> hasMany(canciones::class);
-    }
     public function imagenes(){
         return $this-> HasMany(imagenes::class);
     }
     public function redirects(){
         return $this-> hasMany(redirects::class);
+    }
+    public function album(){
+        return $this-> hasMany(album::class);
     }
     }
