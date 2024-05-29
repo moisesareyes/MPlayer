@@ -58,10 +58,12 @@ Route::get('/info',[infoController::class,'infodex']);
 Route::get('/info/mplayer',[infoController::class,'mplayer']);
 Route::get('/info/disclaimer',[infoController::class,'disclaimer']);
 Route::get('/info/user/{user}',[infoController::class,'userinfo']);
-Route::get('/login',[userController::class,'login']);
+Route::get('/login',[userController::class,'login'])->name('login');
 Route::post('/login/reg',[userController::class,'reg'])->name('recepReg');
 Route::post('/login/log',[userController::class,'log'])->name('recepLog');
 Route::get('/play/{id}',[playController::class,'play']);
+Route::get('/pl/create',[playController::class,'playlist']);
+Route::post('/pl/createPlaylist',[playController::class,'createPlaylist'])->name('createPL');
 Route::get('/testing',function(){ 
     $artists= new artists;
     $artistswheresearch=artists::where('name','Promedio')->first();
